@@ -10,6 +10,10 @@ class ApplicationController < Sinatra::Base
     Day.all.to_json
   end
 
+  get "/days/:id" do
+    Day.find(params[:id]).to_json
+  end
+
   get "/tasks" do
     Task.all.to_json
   end
