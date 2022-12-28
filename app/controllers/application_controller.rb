@@ -18,4 +18,16 @@ class ApplicationController < Sinatra::Base
     Task.all.to_json
   end
 
+  get "/tasks/:id" do
+    Task.find(params[:id]).to_json
+  end
+
+  post "/tasks" do
+    new_task = Task.create(
+      task_name: params[:task_name],
+      day_id: params[:day_id]
+    )
+    new_task.to_json
+  end
+
 end
