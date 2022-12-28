@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+
   set :default_content_type, 'application/json'
   
   # Add your routes here
@@ -28,6 +29,12 @@ class ApplicationController < Sinatra::Base
       day_id: params[:day_id]
     )
     new_task.to_json
+  end
+
+  delete "/tasks/:id" do
+    task = Task.find(params[:id])
+    task.destroy
+    task.to_json
   end
 
 end
