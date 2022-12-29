@@ -37,4 +37,12 @@ class ApplicationController < Sinatra::Base
     task.to_json
   end
 
+  patch "/tasks/:id" do
+    task = Task.find(params[:id])
+    task.update(
+      task_name: params[:task_name]
+    )
+    task.to_json
+  end
+
 end
