@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_27_191701) do
+ActiveRecord::Schema.define(version: 2023_01_04_033127) do
+
+  create_table "bills", force: :cascade do |t|
+    t.string "bill_name"
+    t.integer "amount"
+    t.integer "day_of_month"
+  end
 
   create_table "days", force: :cascade do |t|
     t.string "name"
