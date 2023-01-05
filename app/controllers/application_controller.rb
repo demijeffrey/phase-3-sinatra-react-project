@@ -36,8 +36,37 @@ class ApplicationController < Sinatra::Base
     task = Task.find(params[:id])
     task.update(
       task_name: params[:task_name]
+      day_id: params[:day_id]
     )
     task.to_json
+  end
+
+  get "/bills" do
+    Bill.all.to_json
+  end
+
+  post "/bills" do
+    new_bill = Bill.create(
+      bill_name: params[:bill_name],
+      amount: params[:amount],
+      day_of_month: params[:day_of_month]
+    )
+    new_bill.to_json
+  end
+
+  delete "/bills/:id" do
+    bill = Bill.find(params[:id])
+    bill.destroy
+    bill.to_json
+  end
+
+  patch "/bills/:id" do
+    bill = Bill.find(params[:id])
+    bill.update(
+      bill_name: params[:bill_name],
+      amount: params[:amount],
+      day_of_month: params[:day_of_month]
+    )
   end
 
 end

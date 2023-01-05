@@ -1,4 +1,4 @@
-class Bills < ActiveRecord::Migration[6.1]
+class CreateBills < ActiveRecord::Migration[6.1]
 
   def change
 
