@@ -31,9 +31,13 @@ dog_park = Task.create(task_name: "Take dog to park", day_id: saturday.id)
 meal_plan = Task.create(task_name: "Plan meals for week", day_id: monday.id)
 water_plants = Task.create(task_name: "Water plants", day_id: thursday.id)
 
+##Month day seeds
+fourth = MonthDay.create(day: 04)
+first = MonthDay.create(day: 01)
+
 ##Bill seeds
-car = Bill.create(bill_name: "Car payment", amount: 400, day_of_month: 04)
-rent = Bill.create(bill_name: "Rent", amount: 1850, day_of_month: 01)
+car = Bill.create(bill_name: "Car payment", amount: 400, month_day_id: fourth.id)
+rent = Bill.create(bill_name: "Rent", amount: 1850, month_day_id: first.id)
 
 
 puts "✅ Done seeding!"

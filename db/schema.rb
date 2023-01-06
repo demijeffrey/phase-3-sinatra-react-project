@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_04_033127) do
+ActiveRecord::Schema.define(version: 2023_01_06_035429) do
 
   create_table "bills", force: :cascade do |t|
     t.string "bill_name"
     t.integer "amount"
-    t.integer "day_of_month"
+    t.integer "month_day_id"
   end
 
   create_table "days", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "month_days", force: :cascade do |t|
+    t.integer "day"
   end
 
   create_table "tasks", force: :cascade do |t|

@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
   patch "/tasks/:id" do
     task = Task.find(params[:id])
     task.update(
-      task_name: params[:task_name]
+      task_name: params[:task_name],
       day_id: params[:day_id]
     )
     task.to_json
@@ -67,6 +67,15 @@ class ApplicationController < Sinatra::Base
       amount: params[:amount],
       day_of_month: params[:day_of_month]
     )
+    bill.to_json
+  end
+
+  get "/month_days" do
+    MonthDay.all.to_json
+  end
+
+  get "/month_days/:id" do
+    MonthDay.find(params[:id]).to_json
   end
 
 end
