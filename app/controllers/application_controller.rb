@@ -49,7 +49,7 @@ class ApplicationController < Sinatra::Base
     new_bill = Bill.create(
       bill_name: params[:bill_name],
       amount: params[:amount],
-      day_of_month: params[:day_of_month]
+      month_day_id: params[:month_day_id]
     )
     new_bill.to_json
   end
@@ -65,7 +65,7 @@ class ApplicationController < Sinatra::Base
     bill.update(
       bill_name: params[:bill_name],
       amount: params[:amount],
-      day_of_month: params[:day_of_month]
+      month_day_id: params[:month_day_id]
     )
     bill.to_json
   end
@@ -76,6 +76,11 @@ class ApplicationController < Sinatra::Base
 
   get "/month_days/:id" do
     MonthDay.find(params[:id]).to_json
+  end
+
+  post "/month_days" do
+    newDay = MonthDay.find_or_create_by!(day: params[:day])
+    newDay.to_json
   end
 
 end
