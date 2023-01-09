@@ -3,6 +3,7 @@ puts "Clearing tables..."
 Day.destroy_all
 Task.destroy_all
 Bill.destroy_all
+MonthDay.destroy_all
 
 puts "All clear!"
 

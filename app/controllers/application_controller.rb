@@ -71,7 +71,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/month_days" do
-    MonthDay.all.to_json
+    MonthDay.all.order(:day).to_json
   end
 
   get "/month_days/:id" do
@@ -79,8 +79,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/month_days" do
-    newDay = MonthDay.find_or_create_by!(day: params[:day])
-    newDay.to_json
+    MonthDay.find_or_create_by(day: params[:day]).to_json
   end
 
 end
