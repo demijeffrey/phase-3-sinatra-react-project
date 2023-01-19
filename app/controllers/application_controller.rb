@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/tasks" do
-    Task.all.to_json
+    Task.all.to_json(:include => :day)
   end
 
   get "/tasks/:id" do
