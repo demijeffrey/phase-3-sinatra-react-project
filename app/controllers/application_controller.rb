@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   get "/days" do
-    Day.all.to_json
+    Day.all.to_json(:include => :tasks)
   end
 
   get "/days/:id" do
@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/bills" do
-    Bill.all.to_json
+    Bill.all.to_json(:include => :month_day)
   end
 
   post "/bills" do
@@ -71,7 +71,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/month_days" do
-    MonthDay.all.order(:day).to_json
+    MonthDay.all.order(:day).to_json(:include => :bills)
   end
 
   get "/month_days/:id" do

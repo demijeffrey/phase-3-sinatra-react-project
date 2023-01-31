@@ -1,3 +1,3 @@
 class Bill < ActiveRecord::Base
-    belongs_to :MonthDay
+    belongs_to :month_day
 end
